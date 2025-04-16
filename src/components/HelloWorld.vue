@@ -1,16 +1,25 @@
 <script setup lang="ts">
   import { ref } from 'vue'
+  import { Button, Icon, showToast } from 'vant'
 
   defineProps<{ msg: string }>()
 
   const count = ref(0)
+  const handleClick = () => {
+    showToast({
+      message: '自定义图片',
+      icon: 'https://fastly.jsdelivr.net/npm/@vant/assets/logo.png',
+    })
+  }
 </script>
 
 <template>
   <p>{{ msg }}</p>
 
   <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
+    <Button type="primary" plain @click="count++">count is {{ count }}</Button>
+    <Icon name="chat-o" @click="handleClick" />
+    <Button type="primary" @click="count++">count is {{ count }}</Button>
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
