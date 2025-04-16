@@ -1,17 +1,25 @@
-### Vue@3.5.13 + TypeScript@5.7.2 + Vite@6.2.0 + Vant@4.9.19 + Pinia@3.0.2 + eslint@9.24.0
+#### Vue@3.5.13 + TypeScript@5.7.2 + Vite@6.2.0 + Vant@4.9.19 + Pinia@3.0.2 + eslint@9.24.0
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+从 ESLint v9.0.0 开始，ESLint 支持以下版本的 Node.js： Node.js v18.18.0及更高版本、 Node.js v20.9.0及更高版本、 Node.js v21 及更高版本
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+##### 项目介绍：
 
-从 ESLint v9.0.0 开始，ESLint 正式放弃对这些版本的 Node.js 的支持。ESLint 现在支持以下版本的 Node.js：
+node版本：v18.20.3 或更高版本
 
-Node.js v18.18.0 及更高版本
+包管理器：pnpm
 
-Node.js v20.9.0 及更高版本
+##### 项目启动：
+```shell
+pnpm install
 
-Node.js v21 及更高版本
+pnpm run dev
 
+pnpm run build
+
+pnpm run lint
+```
+
+项目安装涉及主要依赖有：
 ```shell
 # 安装 pinia
 pnpm add pinia
@@ -46,3 +54,5 @@ npx prettier . --write
 # 修复
 npx prettier . --write --fix
 ```
+
+脚手架指定使用 pnpm 包管理器，含 Prettier + ESLint + Husky + lint-staged + Commitlint  代码规范检查 ，git 代码提交需符合指定格式
