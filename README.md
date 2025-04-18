@@ -53,6 +53,9 @@ npx prettier . --write
 
 # 修复
 npx prettier . --write --fix
+
+# 安装path设置别名alias
+pnpm add -D @types/node
 ```
 
 脚手架指定使用 pnpm 包管理器，含 Prettier + ESLint + Husky + lint-staged + Commitlint  代码规范检查 ，git 代码提交需符合指定格式

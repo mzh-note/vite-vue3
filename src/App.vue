@@ -1,9 +1,11 @@
 <script setup lang="ts">
-  import HelloWorld from './components/HelloWorld.vue'
+  import HomePage from '@/pages/HomePage.vue'
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <div id="app">
+    <HomePage />
+  </div>
 </template>
 
 <style scoped lang="less">
