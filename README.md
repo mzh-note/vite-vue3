@@ -8,6 +8,7 @@ node版本：v18.20.3 或更高版本
 
 包管理器：pnpm
 
+vant官网：https://vant.pro/vant/#/zh-CN
 ##### 项目启动：
 ```shell
 pnpm install

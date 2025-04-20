@@ -11,6 +11,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --van-cell-font-size: 15px;
+}
+/*
+https://vant.pro/vant/#/zh-CN/faq
+两个:root显式提高优先级，覆盖vant的主题变量
+*/
+:root:root {
+  --van-cell-font-size: 15px;
 }
 
 a {
