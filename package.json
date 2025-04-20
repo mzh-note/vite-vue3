@@ -7,11 +7,10 @@
     "dev": "vite --open",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "eslint src && npx prettier . --write",
-    "lint:fix": "eslint src --fix && npx prettier . --write --fix",
+    "lint": "eslint src --fix && npx prettier . --write --fix",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
-    "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
+    "format": "eslint src --fix && prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
     "commitlint": "commitlint --config commitlint.config.cjs -e -V"
   },
   "dependencies": {

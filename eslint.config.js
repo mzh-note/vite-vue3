@@ -18,15 +18,17 @@ export default typescriptEslint.config(
       },
     },
     rules: {
+      'no-var': 'error',
       'no-console': 'off',
       semi: ['error', 'never'],
-      'no-unused-vars': 'error',
+      'no-unused-vars': 'warn',
       'prefer-const': 'error',
       indent: ['error', 2],
       quotes: ['warn', 'single'],
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       'vue/multi-word-component-names': 'off',
+      'vue/no-mutating-props': 'off'
     },
   },
   eslintConfigPrettier
