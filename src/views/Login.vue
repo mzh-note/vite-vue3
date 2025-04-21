@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
   .login-page {
     height: 100%;
     width: 100%;
@@ -33,6 +33,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     .btn {
       display: flex;
       justify-content: center;

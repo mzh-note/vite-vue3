@@ -23,7 +23,7 @@
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
   .read-the-docs {
     color: #888;
   }

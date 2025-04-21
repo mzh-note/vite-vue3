@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
   .home-page {
     color: #f22;
   }
