@@ -1,27 +1,54 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { onMounted } from 'vue'
+  import { reactive } from 'vue'
   import { useRouter } from 'vue-router'
 
+  interface FormState {
+    username: string
+    password: string
+    remember: boolean
+  }
+
+  const formState = reactive<FormState>({
+    username: '',
+    password: '',
+    remember: true,
+  })
   const router = useRouter()
-  const username = ref('')
-  const password = ref('')
-  const onSubmit = (values) => {
-    console.log('submit', values)
+
+  const onFinish = (values: any) => {
+    console.log('Success:', values)
     router.push('/')
   }
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo)
+  }
+
+  onMounted(() => {
+    console.log('login')
+    // 登录页清除session
+  })
 </script>
 
 <template>
   <div class="login-page">
-    <van-form @submit="onSubmit">
-      <van-cell-group inset>
-        <van-field v-model="username" name="username" label="用户名" placeholder="用户名" :rules="[{ required: true, message: '请填写用户名' }]" />
-        <van-field v-model="password" type="password" name="password" label="密码" placeholder="密码" :rules="[{ required: true, message: '请填写密码' }]" />
-      </van-cell-group>
-      <div style="margin: 16px">
-        <van-button round block type="primary" native-type="submit"> 登陆 </van-button>
-      </div>
-    </van-form>
+    <a-form :model="formState" name="basic" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" autocomplete="off" @finish="onFinish" @finish-failed="onFinishFailed">
+      <a-form-item label="账号" name="username" :rules="[{ required: true, message: '请输入用账号' }]">
+        <a-input v-model:value="formState.username" />
+      </a-form-item>
+
+      <a-form-item label="密码" name="password" :rules="[{ required: true, message: '请输入用密码' }]">
+        <a-input-password v-model:value="formState.password" />
+      </a-form-item>
+
+      <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
+        <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
+      </a-form-item>
+
+      <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
+        <a-button type="primary" html-type="submit">登录</a-button>
+      </a-form-item>
+    </a-form>
   </div>
 </template>
 

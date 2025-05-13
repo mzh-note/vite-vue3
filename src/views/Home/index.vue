@@ -1,13 +1,22 @@
 <script setup lang="ts">
   import HelloWorld from '@/components/HelloWorld.vue'
+  import { useRouter } from 'vue-router'
+  import useUserStore from '@/store/useUserStore'
+
+  const { clearUserInfo } = useUserStore()
+  const router = useRouter()
+  const logout = () => {
+    clearUserInfo()
+    router.push('/login', { replace: true })
+  }
 </script>
 
 <template>
   <div class="home-page">
-    <van-space fill>
+    <a-space>
       <router-link to="/user">个人中心</router-link>
-      <router-link to="/login">退出登陆</router-link>
-    </van-space>
+      <a-button @click="logout">退出登陆</a-button>
+    </a-space>
     <HelloWorld msg="Vite + Vue3" />
   </div>
 </template>

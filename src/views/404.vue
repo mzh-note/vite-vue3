@@ -1,10 +1,15 @@
-<script setup lang="ts"></script>
-
+<script setup lang="ts">
+  import { RouterLink } from 'vue-router'
+</script>
 <template>
   <div>
-    <van-space fill>
-      <router-link to="/">首页</router-link>
-    </van-space>
+    <a-space>
+      <a-empty>
+        <template #description>
+          <span>暂无权限，<RouterLink to="/login">去登录</RouterLink></span>
+        </template>
+      </a-empty>
+    </a-space>
   </div>
 </template>
 

@@ -1,7 +1,31 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { onMounted } from 'vue'
+  import { storeToRefs } from 'pinia'
+  import { useLoadingStore } from '@/store/useLoadingStore'
+  import { RouterView, useRouter } from 'vue-router'
+  import useUserStore from '@/store/useUserStore'
+
+  const loadingStore = useLoadingStore()
+  const { isLoading, tips } = storeToRefs(loadingStore)
+  const { userInfo, getSession, clearUserInfo } = useUserStore()
+  const router = useRouter()
+
+  onMounted(async () => {
+    try {
+      await getSession()
+      console.log('session后', userInfo)
+    } catch (e) {
+      clearUserInfo()
+      router.push('/login', { replace: true })
+      console.error(e)
+    }
+  })
+</script>
 
 <template>
-  <router-view />
+  <a-spin :spinning="isLoading" :tip="tips">
+    <RouterView />
+  </a-spin>
 </template>
 
 <style scoped lang="scss">
