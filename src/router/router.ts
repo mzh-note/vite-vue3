@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import useUserStore from '@/store/useUserStore'
-import { useLoadingStore } from '@/store/useLoadingStore'
+import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
 const routes = [
   {
@@ -44,23 +44,19 @@ const routes = [
 ]
 
 const router = createRouter({
+  history: qiankunWindow.__POWERED_BY_QIANKUN__ ? createWebHistory('/portal/panorama-web') : createWebHistory(),
   routes,
-  history: createWebHistory(),
 })
 
 router.beforeEach((to, _from, next) => {
   const userStore = useUserStore()
   const { userInfo } = storeToRefs(userStore)
-  const loadingStore = useLoadingStore()
-  const { isLoading } = storeToRefs(loadingStore)
 
-  console.log('isLoading.value', isLoading.value, 'router.beforeEach：', to.name, 'userInfo.value.token: ', userInfo.value.token)
-
-  const title = to?.meta?.title
-  document.title = title as string
+  // console.log('router.beforeEach：', to.name, 'userInfo.value.token: ', userInfo.value.token)
 
   // next()
   if (to.name !== 'login' && !userInfo.value.token) {
+    console.log('token失效')
     next({
       name: 'login',
     })

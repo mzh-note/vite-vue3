@@ -9,10 +9,10 @@
   const loadingStore = useLoadingStore()
   const { showLoading, hideLoading } = loadingStore
   const { isLoading, tips } = storeToRefs(loadingStore)
-  const { userInfo, setUserInfo, clearUserInfo } = useUserStore()
+  const { setUserInfo, clearUserInfo } = useUserStore()
   const router = useRouter()
 
-  onMounted(async () => {
+  const initSession = async () => {
     showLoading()
     try {
       const res = await session()
@@ -21,9 +21,13 @@
     } catch (e) {
       hideLoading()
       clearUserInfo()
-      router.push('/login', { replace: true })
+      router.push('/404', { replace: true })
       console.error(e)
     }
+  }
+  onMounted(() => {
+    console.log('vite-vue3 init')
+    initSession()
   })
 </script>
 

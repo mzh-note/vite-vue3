@@ -30,7 +30,7 @@ https.interceptors.response.use(
   (error) => {
     // 异常处理
     if (error.response?.status === 403 || error.response?.status === 401) {
-      // window.parent.postMessage(JSON.stringify({type: 'LOGOUT'}), '*')
+      window.parent.postMessage(JSON.stringify({ type: 'LOGOUT' }), '*')
     }
     return Promise.reject(error)
   }

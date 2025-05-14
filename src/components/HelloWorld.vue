@@ -2,7 +2,6 @@
   import { ref } from 'vue'
   import { message } from 'ant-design-vue'
   import { SmileTwoTone, HeartTwoTone, CheckCircleTwoTone } from '@ant-design/icons-vue'
-  import { showGlobalSpin, hideGlobalSpin } from '@/utils/spinService'
   import { useLoadingStore } from '@/store/useLoadingStore'
 
   defineProps<{ msg: string }>()
@@ -40,19 +39,12 @@
       hideLoading()
     }, 2000)
   }
-  const showSpin = () => {
-    showGlobalSpin()
-    setTimeout(() => {
-      hideGlobalSpin()
-    }, 2000)
-  }
 </script>
 
 <template>
   <div class="demo">
     <a-space :size="8">
       <a-button @click="showGlobalLoading">全局loading</a-button>
-      <a-button @click="showSpin">加载loading</a-button>
       <a-button @click="count++">count is {{ count }}</a-button>
       <smile-two-tone />
       <heart-two-tone two-tone-color="#eb2f96" />

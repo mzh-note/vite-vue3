@@ -1,7 +1,5 @@
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 import { defineStore } from 'pinia'
-import { session } from '@/api/auth'
-import { useLoadingStore } from '@/store/useLoadingStore'
 
 interface IUserInfo {
   token: string
