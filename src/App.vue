@@ -4,17 +4,22 @@
   import { useLoadingStore } from '@/store/useLoadingStore'
   import { RouterView, useRouter } from 'vue-router'
   import useUserStore from '@/store/useUserStore'
+  import { session } from '@/api/auth'
 
   const loadingStore = useLoadingStore()
+  const { showLoading, hideLoading } = loadingStore
   const { isLoading, tips } = storeToRefs(loadingStore)
-  const { userInfo, getSession, clearUserInfo } = useUserStore()
+  const { userInfo, setUserInfo, clearUserInfo } = useUserStore()
   const router = useRouter()
 
   onMounted(async () => {
+    showLoading()
     try {
-      await getSession()
-      console.log('session后', userInfo)
+      const res = await session()
+      setUserInfo(res.data)
+      hideLoading()
     } catch (e) {
+      hideLoading()
       clearUserInfo()
       router.push('/login', { replace: true })
       console.error(e)
@@ -24,7 +29,11 @@
 
 <template>
   <a-spin :spinning="isLoading" :tip="tips">
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </RouterView>
   </a-spin>
 </template>
 

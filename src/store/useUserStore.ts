@@ -14,21 +14,10 @@ const useUserStore = defineStore(
       token: '',
       id: '',
     })
-
-    const loadingStore = useLoadingStore()
-    const { showLoading, hideLoading } = loadingStore
-    const getSession = async () => {
-      showLoading()
-      const res = await session()
-      console.log(res)
-      hideLoading()
-      setUserInfo({ token: 'ddd', id: 'ad' })
-    }
     const setUserInfo = (value) => {
       // Object.assign(userInfo, { ...value})
       userInfo.token = value.token
       userInfo.id = value.id
-      console.log('setUserInfo', userInfo)
     }
     const clearUserInfo = () => {
       userInfo.token = ''
@@ -36,7 +25,6 @@ const useUserStore = defineStore(
     }
     return {
       userInfo,
-      getSession,
       setUserInfo,
       clearUserInfo,
     }

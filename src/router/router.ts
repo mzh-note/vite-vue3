@@ -58,6 +58,8 @@ router.beforeEach((to, _from, next) => {
 
   const title = to?.meta?.title
   document.title = title as string
+
+  // next()
   if (to.name !== 'login' && !userInfo.value.token) {
     next({
       name: 'login',

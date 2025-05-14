@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { onMounted } from 'vue'
   import { reactive } from 'vue'
-  import { useRouter } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
 
   interface FormState {
     username: string
@@ -15,6 +15,7 @@
     remember: true,
   })
   const router = useRouter()
+  const route = useRoute()
 
   const onFinish = (values: any) => {
     console.log('Success:', values)
@@ -25,7 +26,7 @@
   }
 
   onMounted(() => {
-    console.log('login')
+    console.log('login', route.path, route.name)
     // 登录页清除session
   })
 </script>
