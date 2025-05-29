@@ -1,10 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { LOGOUT } from '@/common/jump'
+</script>
 <template>
-  <div class="page-404">
+  <div class="page-403">
     <a-space>
       <a-empty>
         <template #description>
-          <span>页面丢失了...</span>
+          <span>暂无权限，<a-button type="link" @click="LOGOUT">去登录</a-button></span>
         </template>
       </a-empty>
     </a-space>
@@ -12,11 +14,10 @@
 </template>
 
 <style scoped lang="scss">
-  .page-404 {
+  .page-403 {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 50px;
-    color: #666;
   }
 </style>

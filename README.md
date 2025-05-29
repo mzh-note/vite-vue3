@@ -4,59 +4,21 @@
 
 ##### 项目介绍：
 
-node版本：v18.20.3 或更高版本
+node版本推荐：v18.20.3+ 或更高版本
 
-包管理器：pnpm
+项目指定使用 pnpm 包管理器，含 Prettier + ESLint + Husky + lint-staged + commitlint + stylelint  代码规范检查 ，git 代码提交需符合指定格式
 
-vant官网：https://vant.pro/vant/#/zh-CN
+antd 官网：https://www.antdv.com/docs/vue/introduce-cn
+
 ##### 项目启动：
 ```shell
 pnpm install
 
 pnpm run dev
 
+# build
 pnpm run build
 
+# eslint检测
 pnpm run lint
 ```
-
-项目安装涉及主要依赖有：
-```shell
-# 安装 pinia
-pnpm add pinia
-
-# pinia 持久化
-pnpm add pinia-plugin-persistedstate
-
-# 安装 vant
-pnpm add vant
-
-# ESLint 核心
-pnpm add -D eslint @eslint/js
-
-# Vue3 支持
-pnpm add -D eslint-plugin-vue vue-eslint-parser
-
-# TypeScript 支持
-pnpm add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
-
-# Prettier 集成
-pnpm add -D prettier eslint-plugin-prettier eslint-config-prettier
-
-# 初始化 eslint配置文件
-npx eslint --init
-
-# 检测 eslint
-pnpm run lint
-
-# 新增 .prettierignore 添加忽略文件，package.json配置脚本
-npx prettier . --write
-
-# 修复
-npx prettier . --write --fix
-
-# 安装path设置别名alias
-pnpm add -D @types/node
-```
-
-脚手架指定使用 pnpm 包管理器，含 Prettier + ESLint + Husky + lint-staged + commitlint + stylelint  代码规范检查 ，git 代码提交需符合指定格式

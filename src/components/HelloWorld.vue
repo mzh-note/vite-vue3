@@ -1,30 +1,69 @@
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { Button, Icon, showToast } from 'vant'
+  import { message } from 'ant-design-vue'
+  import { SmileTwoTone, HeartTwoTone, CheckCircleTwoTone } from '@ant-design/icons-vue'
+  import { useLoadingStore } from '@/store/useLoadingStore'
+  import { closeCurrentTab } from '@/common/jump'
 
   defineProps<{ msg: string }>()
 
   const count = ref(0)
-  const handleClick = () => {
-    showToast({
-      message: '自定义图片',
-      icon: 'https://mazhanghua.com/logo.png',
-    })
+
+  const { showLoading, hideLoading } = useLoadingStore()
+
+  const success = () => {
+    message.success('This is a success message')
+  }
+  const error = () => {
+    message.error('This is an error message')
+  }
+  const warning = () => {
+    message.warning('This is a warning message')
+  }
+  const loading = () => {
+    message.loading('加载中')
+  }
+
+  const open = ref<boolean>(false)
+
+  const showModal = () => {
+    open.value = true
+  }
+
+  const handleOk = (e: MouseEvent) => {
+    console.log(e)
+    open.value = false
+  }
+  const showGlobalLoading = () => {
+    showLoading()
+    setTimeout(() => {
+      hideLoading()
+    }, 2000)
   }
 </script>
 
 <template>
-  <div class="card">
-    <van-space fill>
-      <Button type="primary" plain @click="count++">count is {{ count }}</Button>
-      <Icon name="chat-o" @click="handleClick" />
-      <Button type="primary" @click="count++">count is {{ count }}</Button>
-    </van-space>
+  <div class="demo">
+    <a-space :size="8">
+      <a-button @click="showGlobalLoading">全局loading</a-button>
+      <a-button @click="count++">count is {{ count }}</a-button>
+      <a-button @click="closeCurrentTab">关闭当前标签页</a-button>
+      <smile-two-tone />
+      <heart-two-tone two-tone-color="#eb2f96" />
+      <check-circle-two-tone two-tone-color="#52c41a" />
+      <a-button @click="success">Success</a-button>
+      <a-button @click="error">Error</a-button>
+      <a-button @click="warning">Warning</a-button>
+      <a-button @click="loading">loading</a-button>
+      <a-button type="primary" @click="showModal">Open Modal</a-button>
+      <a-modal v-model:open="open" title="Basic Modal" @ok="handleOk">
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </a-modal>
+      <a-image :width="100" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
+    </a-space>
   </div>
 </template>
 
-<style scoped lang="scss">
-  .read-the-docs {
-    color: #888;
-  }
-</style>
+<style scoped lang="scss"></style>
