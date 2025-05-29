@@ -35,6 +35,8 @@ export default defineConfig({
     },
   },
   build: {
+    outDir: 'dist',
+    assetsDir: 'static',
     rollupOptions: {
       output: {
         format: 'umd', // 必须为 umd 格式
